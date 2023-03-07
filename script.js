@@ -5,6 +5,39 @@
 let pCounter = 0;
 let cCounter = 0;
 
+
+//displays counters at 0 and connects each of their designated nodes
+
+const playerScoreNode = document.querySelector('.player-score-node');
+playerScoreNode.innerHTML = pCounter;
+const computerScoreNode = document.querySelector('.computer-score-node');
+computerScoreNode.innerHTML = cCounter;
+
+//node conenction for displaying status of who is winning
+const gameMessage = document.querySelector('.message');
+
+const choosePaper = document.querySelector('.choosePaper');
+choosePaper.addEventListener('click', () => {
+    playerChoice = 'paper';
+    game();
+});
+
+
+const chooseRock = document.querySelector('.chooseRock');
+chooseRock.addEventListener('click', () => {
+    playerChoice = 'rock';
+    game();
+    
+});
+
+const chooseScissors = document.querySelector('.chooseScissors');
+chooseScissors.addEventListener('click', () => {
+    playerChoice = 'scissors';
+    game();
+});
+
+
+
 //define a function for computer choice
 
 function getComputerChoice(){
@@ -17,62 +50,74 @@ function getComputerChoice(){
 //write a function that plays a single round of rock paper scissors!
 
 function PlayRound (computerChoice, playerChoice){
+
     if(computerChoice == 'rock' && playerChoice == 'scissors'){
-        alert('Computer Wins! Rock beats scissors');
-        return ++cCounter;
+        gameMessage.innerHTML = ('Computer Wins! Rock beats scissors');
+        ++cCounter;
+        computerScoreNode.innerHTML = cCounter;
+
     }
     else if (computerChoice == 'rock' && playerChoice == 'paper'){
-        alert('Player Wins! Paper beats rock');
-        return ++pCounter;
+        gameMessage.innerHTML = ('Player Wins! Paper beats rock');
+        ++pCounter;
+        playerScoreNode.innerHTML = pCounter;
+        
+
     }
     else if (computerChoice == 'paper' && playerChoice == 'rock'){
-        alert('Computer Wins! Paper beats rock');
-        return ++cCounter;
+        gameMessage.innerHTML = ('Computer Wins! Paper beats rock');
+        ++cCounter;
+        computerScoreNode.innerHTML = cCounter;
+        
     }
     else if (computerChoice == 'paper' && playerChoice == 'scissors'){
-        alert('Player Wins! Scissors beats paper');
-        return ++pCounter;
+        gameMessage.innerHTML = ('Player Wins! Scissors beats paper');
+        ++pCounter;
+        playerScoreNode.innerHTML = pCounter;
+        
     }
     else if (computerChoice == 'scissors' && playerChoice == 'paper'){
-        alert('Computer Won! Scissors beat paper');
-        return ++cCounter;
+        gameMessage.innerHTML = ('Computer Won! Scissors beat paper');
+        ++cCounter;
+        computerScoreNode.innerHTML = cCounter;
+        
+        
     }
     else if (computerChoice == 'scissors' && playerChoice == 'rock'){
-        alert('Player Won! Rock beats scissors');
-        return ++pCounter;
+        gameMessage.innerHTML = ('Player Won! Rock beats scissors');
+        ++pCounter;
+        playerScoreNode.innerHTML = pCounter;
+        
     }
     else if(computerChoice == playerChoice){
-        alert('draw');
+        gameMessage.innerHTML = ('We have a Draw');
+        console.log('There are no points to add');
     }
     else{
-        alert('incorrect value');
+        console.log('incorrect value');
     }
 };
 
 
 function game(){
-    for(let i = 0; i < 5; i++){
-        let playerChoice = prompt('Enter rock, paper or scissors!');
-        // ends the loop if the player hits enter
-        if (playerChoice == null){
-            end;
-        }
-        let computerChoice = getComputerChoice();
-        console.log(PlayRound(playerChoice, computerChoice));
-    }
+    let computerChoice = getComputerChoice();
+    console.log(PlayRound(computerChoice, playerChoice));
 
-    //checks to see who wins after the loops ends
-
-    if (cCounter == pCounter){
-        alert('We have a Draw Match');
+    
+    if (cCounter == 3){
+        gameMessage.innerHTML = ('We have a winner! Computer');
+        cCounter = 0;
+        computerScoreNode.innerHTML = cCounter;
+        pCounter = 0;
+        playerScoreNode.innerHTML = pCounter;
     }
-    else if (cCounter > pCounter){
-        alert('Computer Wins with: ' + cCounter + ' points!');
+    else if (pCounter == 3){
+        gameMessage.innerHTML = ('We have a winner! Player!');
+        pCounter = 0;
+        playerScoreNode.innerHTML = pCounter;
+        cCounter = 0;
+        computerScoreNode.innerHTML = cCounter;
     }
-    else if (cCounter < pCounter){
-        alert('Player Wins with: ' + pCounter + ' points!');
-    }
-}
-game();
+};
 
 

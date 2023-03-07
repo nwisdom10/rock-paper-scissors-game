@@ -6,8 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors Game</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=La+Belle+Aurore&family=Press+Start+2P&family=Roboto:wght@700&family=Sacramento&display=swap" rel="stylesheet">
 </head>
 <body>
-    <script src="script.js"></script>
-</body>
+    <div class="game-title">
+        <h1>Rock, Paper, Scissors!</h1>
+    </div>
+    <div class="game-descript">
+        <p>Choose an option below to start playing. First to 3 wins!</p>
+    </div>
+    <div class="choice-container">
+        <div class="rock-container">
+            <button class="chooseRock"><img src="imgs/rock.png" alt=""></button>
+            <h2>Rock</h2>
+        </div>
+        <div class="scissors-container">
+            <button class="chooseScissors"><img src="imgs/scissors.png" alt=""></button>
+            <h2>Scissors</h2>
+        </div>
+        <div class="paper-container">
+            <button class="choosePaper"><img src="imgs/paper.png" alt=""></button>
+            <h2>Paper</h2>
+        </div>
+    </div>
+    <div class="score-counter">
+        <div class="player-score">
+            <h1>Player Score: </h1>
+            <p class="player-score-node"></p>
+        </div>
+        <di class="computer-score">
+            <h1>Computer Score: </h1>
+            <p class="computer-score-node"></p>
+        </div>
+    </div>
+    <div class="round-status">
+        <h1 class="message"></h1>
+    </div>
 </html>
