@@ -1,1 +1,0 @@
-checking to make sure that I can still do git commands and other stuff 
